@@ -17,4 +17,6 @@
 #define RTV_API_ROOT_URL @"http://retrieverapp.com"
 //#define RTV_API_ROOT_URL @"http://192.168.0.8/"
 #define RTV_INTERMIDIARY_PATH @"api/v1/"
+
+#define RTV_API_VERSION @"1.0"
 #endif

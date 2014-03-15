@@ -10,6 +10,7 @@
 //Model
 #import "RTVSearchResponse.h"
 #import "RTVSearchError.h"
+#include <CommonCrypto/CommonDigest.h>
 
 
 @implementation RTVAPI
@@ -115,11 +116,33 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
     return [NSURL URLWithString:fullPath];
 }
 
+- (NSString *)sha1:(NSString *)string
+{
+	NSData *stringBytes = [string dataUsingEncoding: NSUTF8StringEncoding];
+	unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+	
+	if (CC_SHA1([stringBytes bytes], [stringBytes length], digest)) {
+		NSMutableString* hashed = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+		for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+			[hashed appendFormat:@"%02x", digest[i]];
+		}
+		return hashed;
+	}
+	
+	return nil;
+}
+
 + (NSURLSessionConfiguration *)configuration
 {
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     sessionConfig.allowsCellularAccess = YES;
-    [sessionConfig setHTTPAdditionalHeaders: @{@"Accept": @"application/json"}];
+    NSString *time = [NSString stringWithFormat:@"%f",[NSDate timeIntervalSinceReferenceDate]];
+    NSString *shortTime = [time substringToIndex:5];
+    NSString *token = [NSString stringWithFormat:@"Retriver-%@-%@-1",shortTime,RTV_API_VERSION];
+    [sessionConfig setHTTPAdditionalHeaders: @{@"Accept": @"application/json",
+                                               @"X-Reference": time,
+                                               @"X-API-Version" : RTV_API_VERSION,
+                                               @"X-Authentication" : token}];
 
     sessionConfig.timeoutIntervalForRequest = 30.0;
     sessionConfig.timeoutIntervalForResource = 60.0;

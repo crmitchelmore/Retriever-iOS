@@ -51,8 +51,14 @@
     self.collectionView.dataSource = self.arrayDataSource;
     self.collectionView.delegate = self;
     self.titleLabel.text = self.searchResponse.matchedQuery;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(next)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(snap)];
     [self.collectionView addGestureRecognizer:tap];
+    UISwipeGestureRecognizer *sl = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(next)];
+    sl.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.collectionView addGestureRecognizer:sl];
+    UISwipeGestureRecognizer *sr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(last)];
+    sr.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.collectionView addGestureRecognizer:sr];
     self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged) name:UIDeviceOrientationDidChangeNotification object:nil];
     [self.lastButton addTarget:self action:@selector(last) forControlEvents:UIControlEventTouchUpInside];
@@ -64,26 +70,33 @@
     [self.collectionView.collectionViewLayout shouldInvalidateLayoutForBoundsChange:self.collectionView.bounds];
     [self.view layoutIfNeeded];
     NSInteger index = (self.collectionView.contentOffset.x /self.collectionView.frame.size.width);
-    [self scrollToIndex:index];
+    [self scrollToIndex:index animated:NO];
     
 }
-- (void)scrollToIndex:(NSInteger)index
+- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    if ( index >= 0 && index < [self.arrayDataSource.items count] ){
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
 
-    self.lastButton.hidden = index == 0;
-
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        self.lastButton.hidden = YES;//index == 0;
+        
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
+    }
+}
+- (void)snap
+{
+    NSInteger index = (self.collectionView.contentOffset.x /self.collectionView.frame.size.width)+1;
+    [self scrollToIndex:index animated:NO];
 }
 - (void)next
 {
     NSInteger index = (self.collectionView.contentOffset.x /self.collectionView.frame.size.width)+1;
-    [self scrollToIndex:index];
+    [self scrollToIndex:index animated:YES];
 }
 - (void)last
 {
     NSInteger index = (self.collectionView.contentOffset.x /self.collectionView.frame.size.width)-1;
-    [self scrollToIndex:index];
+    [self scrollToIndex:index animated:YES];
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
