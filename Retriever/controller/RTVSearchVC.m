@@ -17,8 +17,11 @@
 @interface RTVSearchVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
-@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *connectingView;
+
+@property (weak, nonatomic) IBOutlet UILabel *errorMessage;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardHeightConstraint;
@@ -26,6 +29,7 @@
 
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, assign) BOOL loading;
 @end
 
 @implementation RTVSearchVC
@@ -47,7 +51,23 @@
     [self registerForKeyboardNotifications];
 
     [self.searchField becomeFirstResponder];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeError)];
+    [self.connectingView addGestureRecognizer:tap];
+    
 }
+- (void)closeError
+{
+
+    self.activityIndicator.hidden = YES;
+    [UIView animateWithDuration:0.6 animations:^{
+        self.connectingView.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.connectingView.hidden = YES;
+
+    }];
+}
+
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -89,7 +109,11 @@
     if ( loaded ){
         [self.searchField becomeFirstResponder];
     }
+    self.connectingView.hidden = YES;
+    [self rtv_showErrorControlsForError:nil];
     loaded = YES;
+    self.searchField.text = @"";
+    self.loading = NO;
 
 }
 - (void)viewDidAppear:(BOOL)animated
@@ -113,8 +137,12 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-
-    [self rtv_searchForPhrase:textField.text];
+    if ( !self.errorMessage.hidden ){
+        self.errorMessage.hidden = YES;
+        [self closeError];
+    }else if ( !self.loading ){
+        [self rtv_searchForPhrase:textField.text];
+    }
     return YES;
 }
 
@@ -123,12 +151,13 @@
     if ( [string rangeOfString:@" "].length != 0 ){
         return NO;
     }
-    [self rtv_showErrorControlsForError:nil];
     return YES;
 }
 
 - (void)rtv_searchForPhrase:(NSString *)phrase
 {
+    [self showConnecting];
+    self.loading = YES;
     [RTVAPI searchForPhrase:phrase filter:nil success:^(RTVSearchResponse *response) {
         [HistoryResponse historyResponseWithSearchResponse:response context:self.managedObjectContext];
         [self performSegueWithIdentifier:@"showItem" sender:response];
@@ -139,18 +168,31 @@
         }
         
     } failure:^(RTVSearchError *error) {
+        self.loading = NO;
         [self rtv_showErrorControlsForError:error];
-        
-    
-        self.errorLabel.text = error.message;
+        self.activityIndicator.hidden = YES;
+        self.errorMessage.text = error.message;
         
     }];
 
 }
 
+- (void)showConnecting
+{
+    self.connectingView.hidden = NO;
+
+    [UIView animateWithDuration:0.6 animations:^{
+        self.connectingView.alpha = 1;
+    } completion:^(BOOL finished) {
+        self.activityIndicator.hidden = !self.errorMessage.hidden;
+        [self.activityIndicator startAnimating];
+    }];
+}
+
 - (void)rtv_showErrorControlsForError:(RTVSearchError *)error
 {
-    self.errorLabel.hidden = error ? !error.message.length : YES;
+    self.errorMessage.hidden = error ? !error.message.length : YES;
+    self.activityIndicator.hidden = !self.errorMessage.hidden;
 }
 
 

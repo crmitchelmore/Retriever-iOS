@@ -145,7 +145,7 @@
                                             <constraint firstAttribute="height" constant="52" id="UrA-WF-uiB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="40"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -164,20 +164,53 @@
                                     <constraint firstAttribute="width" secondItem="ZFb-dm-euQ" secondAttribute="height" multiplier="1:1" id="jJ3-F1-M4J"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0l-iw-KIU">
+                                <rect key="frame" x="0.0" y="756" width="768" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="728" translatesAutoresizingMaskIntoConstraints="NO" id="XZ2-CQ-BKF">
+                                        <rect key="frame" x="20" y="24" width="728" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.28862657819999998" blue="0.43385138270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="veY-Ct-Sg6">
+                                        <rect key="frame" x="374" y="16" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="veY-Ct-Sg6" secondAttribute="centerX" id="Akg-Lc-bhR"/>
+                                    <constraint firstAttribute="centerY" secondItem="veY-Ct-Sg6" secondAttribute="centerY" id="Hjv-Is-har"/>
+                                    <constraint firstAttribute="bottom" secondItem="XZ2-CQ-BKF" secondAttribute="bottom" constant="5" id="Pnl-W3-v9s"/>
+                                    <constraint firstItem="XZ2-CQ-BKF" firstAttribute="leading" secondItem="T0l-iw-KIU" secondAttribute="leading" constant="20" id="gUx-nB-KbJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="XZ2-CQ-BKF" secondAttribute="trailing" constant="20" id="o8y-1P-3eE"/>
+                                    <constraint firstItem="XZ2-CQ-BKF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="T0l-iw-KIU" secondAttribute="top" id="x4D-Be-DgB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.80392156859999997" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8ec-Da-FWh" firstAttribute="top" secondItem="ZFb-dm-euQ" secondAttribute="bottom" id="5ft-IY-CWu"/>
                             <constraint firstAttribute="centerX" secondItem="ZFb-dm-euQ" secondAttribute="centerX" id="6fW-5P-SRJ"/>
                             <constraint firstAttribute="trailing" secondItem="8ec-Da-FWh" secondAttribute="trailing" id="9Lk-xT-wr4"/>
+                            <constraint firstItem="8ec-Da-FWh" firstAttribute="width" secondItem="T0l-iw-KIU" secondAttribute="width" id="CEp-Fk-bb4"/>
                             <constraint firstItem="8ec-Da-FWh" firstAttribute="leading" secondItem="W8d-nc-sFu" secondAttribute="leading" id="Q3w-JW-8oH"/>
                             <constraint firstAttribute="centerX" secondItem="8ec-Da-FWh" secondAttribute="centerX" id="Vur-7r-ltb"/>
                             <constraint firstItem="ZFb-dm-euQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vCK-Kr-Q0g" secondAttribute="bottom" id="W0s-T8-xUi"/>
+                            <constraint firstItem="8ec-Da-FWh" firstAttribute="centerY" secondItem="T0l-iw-KIU" secondAttribute="centerY" id="W1z-CX-VvR"/>
+                            <constraint firstItem="8ec-Da-FWh" firstAttribute="centerX" secondItem="T0l-iw-KIU" secondAttribute="centerX" id="aY0-lG-kaS"/>
+                            <constraint firstItem="8ec-Da-FWh" firstAttribute="height" secondItem="T0l-iw-KIU" secondAttribute="height" id="olX-lL-BAA"/>
                             <constraint firstItem="gUI-Hd-MRk" firstAttribute="top" secondItem="8ec-Da-FWh" secondAttribute="bottom" constant="216" id="pcf-Hy-aho"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="veY-Ct-Sg6" id="fVf-wF-Wbd"/>
+                        <outlet property="connectingView" destination="T0l-iw-KIU" id="sKi-li-X6U"/>
+                        <outlet property="errorMessage" destination="XZ2-CQ-BKF" id="S3X-Ck-kXN"/>
                         <outlet property="keyboardHeightConstraint" destination="pcf-Hy-aho" id="wBb-IZ-MQe"/>
                         <outlet property="searchField" destination="eZW-BT-gxp" id="AeC-F6-kWm"/>
                         <segue destination="Q2T-pP-n7B" kind="modal" identifier="showItem" id="MyG-x8-RW6"/>

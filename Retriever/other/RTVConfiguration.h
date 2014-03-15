@@ -14,7 +14,7 @@
 #define RTV_NEWRELIC_TOKEN @"AAda545e1bce208fb844efebadd08cada1308c56ff"
 
 //API
-//#define RTV_API_ROOT_URL @"http://api.retrieverapp.com"
-#define RTV_API_ROOT_URL @"http://192.168.0.8/"
-#define RTV_INTERMIDIARY_PATH @"projects/retriever/public/api/v1/"
+#define RTV_API_ROOT_URL @"http://retrieverapp.com"
+//#define RTV_API_ROOT_URL @"http://192.168.0.8/"
+#define RTV_INTERMIDIARY_PATH @"api/v1/"
 #endif
