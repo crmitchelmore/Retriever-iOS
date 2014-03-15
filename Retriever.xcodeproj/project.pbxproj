@@ -6,11 +6,36 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		D644369D18D48E3F0073917A /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D644369E18D48E3F0073917A /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				D64436A118D48E860073917A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		D644367218D456050073917A /* iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D644367118D456050073917A /* iphone.storyboard */; };
 		D644367418D456140073917A /* ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D644367318D456140073917A /* ipad.storyboard */; };
 		D644367A18D459AC0073917A /* retriever.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D644367818D459AC0073917A /* retriever.xcdatamodeld */; };
 		D644367F18D469000073917A /* RTVSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D644367E18D469000073917A /* RTVSearchVC.m */; };
+		D644368218D46BAC0073917A /* RTVAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D644368118D46BAC0073917A /* RTVAPI.m */; };
+		D644368618D46CAE0073917A /* RTVSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D644368518D46CAE0073917A /* RTVSearchResponse.m */; };
+		D644368918D474580073917A /* RTVSearchError.m in Sources */ = {isa = PBXBuildFile; fileRef = D644368818D474580073917A /* RTVSearchError.m */; };
+		D644368C18D474F90073917A /* RTVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D644368B18D474F90073917A /* RTVItem.m */; };
+		D644368F18D482840073917A /* RTVItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D644368E18D482840073917A /* RTVItemVC.m */; };
+		D644369318D483920073917A /* RTVItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D644369218D483920073917A /* RTVItemCell.m */; };
+		D644369618D484CC0073917A /* BPArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D644369518D484CC0073917A /* BPArrayDataSource.m */; };
+		D644369918D48DE60073917A /* HistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D644369818D48DE60073917A /* HistoryItem.m */; };
+		D644369C18D48DE60073917A /* HistoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D644369B18D48DE60073917A /* HistoryResponse.m */; };
+		D64436A618D48EEB0073917A /* _HistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D64436A318D48EEB0073917A /* _HistoryItem.m */; };
+		D64436A718D48EEB0073917A /* _HistoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D64436A518D48EEB0073917A /* _HistoryResponse.m */; };
 		D6D5D71E18D4504D00743557 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D71D18D4504D00743557 /* Foundation.framework */; };
 		D6D5D72018D4504D00743557 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D71F18D4504D00743557 /* CoreGraphics.framework */; };
 		D6D5D72218D4504D00743557 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D72118D4504D00743557 /* UIKit.framework */; };
@@ -44,6 +69,28 @@
 		D644367918D459AC0073917A /* retriever.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = retriever.xcdatamodel; sourceTree = "<group>"; };
 		D644367D18D469000073917A /* RTVSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVSearchVC.h; sourceTree = "<group>"; };
 		D644367E18D469000073917A /* RTVSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVSearchVC.m; sourceTree = "<group>"; };
+		D644368018D46BAC0073917A /* RTVAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVAPI.h; sourceTree = "<group>"; };
+		D644368118D46BAC0073917A /* RTVAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVAPI.m; sourceTree = "<group>"; };
+		D644368418D46CAE0073917A /* RTVSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVSearchResponse.h; sourceTree = "<group>"; };
+		D644368518D46CAE0073917A /* RTVSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVSearchResponse.m; sourceTree = "<group>"; };
+		D644368718D474580073917A /* RTVSearchError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVSearchError.h; sourceTree = "<group>"; };
+		D644368818D474580073917A /* RTVSearchError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVSearchError.m; sourceTree = "<group>"; };
+		D644368A18D474F90073917A /* RTVItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVItem.h; sourceTree = "<group>"; };
+		D644368B18D474F90073917A /* RTVItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVItem.m; sourceTree = "<group>"; };
+		D644368D18D482840073917A /* RTVItemVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVItemVC.h; sourceTree = "<group>"; };
+		D644368E18D482840073917A /* RTVItemVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVItemVC.m; sourceTree = "<group>"; };
+		D644369118D483920073917A /* RTVItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVItemCell.h; sourceTree = "<group>"; };
+		D644369218D483920073917A /* RTVItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVItemCell.m; sourceTree = "<group>"; };
+		D644369418D484CC0073917A /* BPArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPArrayDataSource.h; sourceTree = "<group>"; };
+		D644369518D484CC0073917A /* BPArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPArrayDataSource.m; sourceTree = "<group>"; };
+		D644369718D48DE60073917A /* HistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItem.h; sourceTree = "<group>"; };
+		D644369818D48DE60073917A /* HistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItem.m; sourceTree = "<group>"; };
+		D644369A18D48DE60073917A /* HistoryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryResponse.h; sourceTree = "<group>"; };
+		D644369B18D48DE60073917A /* HistoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryResponse.m; sourceTree = "<group>"; };
+		D64436A218D48EEB0073917A /* _HistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HistoryItem.h; sourceTree = "<group>"; };
+		D64436A318D48EEB0073917A /* _HistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HistoryItem.m; sourceTree = "<group>"; };
+		D64436A418D48EEB0073917A /* _HistoryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HistoryResponse.h; sourceTree = "<group>"; };
+		D64436A518D48EEB0073917A /* _HistoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HistoryResponse.m; sourceTree = "<group>"; };
 		D6D5D71A18D4504D00743557 /* Retriever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Retriever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D5D71D18D4504D00743557 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6D5D71F18D4504D00743557 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -93,6 +140,8 @@
 			children = (
 				D644367D18D469000073917A /* RTVSearchVC.h */,
 				D644367E18D469000073917A /* RTVSearchVC.m */,
+				D644368D18D482840073917A /* RTVItemVC.h */,
+				D644368E18D482840073917A /* RTVItemVC.m */,
 			);
 			name = Controller;
 			path = controller;
@@ -111,6 +160,7 @@
 		D644366F18D4559D0073917A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D644369018D4837C0073917A /* Cells */,
 				D644367018D455F40073917A /* Storyboards */,
 			);
 			name = View;
@@ -130,6 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				D644367618D4581C0073917A /* Config */,
+				D644368018D46BAC0073917A /* RTVAPI.h */,
+				D644368118D46BAC0073917A /* RTVAPI.m */,
+				D644369418D484CC0073917A /* BPArrayDataSource.h */,
+				D644369518D484CC0073917A /* BPArrayDataSource.m */,
 			);
 			name = Other;
 			path = other;
@@ -147,6 +201,11 @@
 			isa = PBXGroup;
 			children = (
 				D644367818D459AC0073917A /* retriever.xcdatamodeld */,
+				D64436A818D48EF20073917A /* Generated */,
+				D644369A18D48DE60073917A /* HistoryResponse.h */,
+				D644369B18D48DE60073917A /* HistoryResponse.m */,
+				D644369718D48DE60073917A /* HistoryItem.h */,
+				D644369818D48DE60073917A /* HistoryItem.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -154,8 +213,34 @@
 		D644367C18D468350073917A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				D644368418D46CAE0073917A /* RTVSearchResponse.h */,
+				D644368518D46CAE0073917A /* RTVSearchResponse.m */,
+				D644368A18D474F90073917A /* RTVItem.h */,
+				D644368B18D474F90073917A /* RTVItem.m */,
+				D644368718D474580073917A /* RTVSearchError.h */,
+				D644368818D474580073917A /* RTVSearchError.m */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		D644369018D4837C0073917A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D644369118D483920073917A /* RTVItemCell.h */,
+				D644369218D483920073917A /* RTVItemCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		D64436A818D48EF20073917A /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				D64436A218D48EEB0073917A /* _HistoryItem.h */,
+				D64436A318D48EEB0073917A /* _HistoryItem.m */,
+				D64436A418D48EEB0073917A /* _HistoryResponse.h */,
+				D64436A518D48EEB0073917A /* _HistoryResponse.m */,
+			);
+			name = Generated;
 			sourceTree = "<group>";
 		};
 		D6D5D71118D4504D00743557 = {
@@ -303,6 +388,7 @@
 			targets = (
 				D6D5D71918D4504D00743557 /* Retriever */,
 				D6D5D73418D4504D00743557 /* RetrieverTests */,
+				D644369D18D48E3F0073917A /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -360,6 +446,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D64436A118D48E860073917A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/mogenerator --template-var arc=true -m \"./Retriever/model/retriever.xcdatamodeld/retriever.xcdatamodel\" -O ./Retriever/model";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -367,10 +466,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D644369C18D48DE60073917A /* HistoryResponse.m in Sources */,
+				D644368218D46BAC0073917A /* RTVAPI.m in Sources */,
+				D644369318D483920073917A /* RTVItemCell.m in Sources */,
 				D6D5D72A18D4504D00743557 /* main.m in Sources */,
 				D6D5D72E18D4504D00743557 /* RTVAppDelegate.m in Sources */,
 				D644367A18D459AC0073917A /* retriever.xcdatamodeld in Sources */,
+				D644368918D474580073917A /* RTVSearchError.m in Sources */,
+				D64436A618D48EEB0073917A /* _HistoryItem.m in Sources */,
+				D644368F18D482840073917A /* RTVItemVC.m in Sources */,
+				D644369618D484CC0073917A /* BPArrayDataSource.m in Sources */,
 				D644367F18D469000073917A /* RTVSearchVC.m in Sources */,
+				D644369918D48DE60073917A /* HistoryItem.m in Sources */,
+				D644368618D46CAE0073917A /* RTVSearchResponse.m in Sources */,
+				D64436A718D48EEB0073917A /* _HistoryResponse.m in Sources */,
+				D644368C18D474F90073917A /* RTVItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +522,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D644369F18D48E3F0073917A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D64436A018D48E3F0073917A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D6D5D74418D4504D00743557 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -555,6 +679,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D644369E18D48E3F0073917A /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D644369F18D48E3F0073917A /* Debug */,
+				D64436A018D48E3F0073917A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D6D5D71518D4504D00743557 /* Build configuration list for PBXProject "Retriever" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

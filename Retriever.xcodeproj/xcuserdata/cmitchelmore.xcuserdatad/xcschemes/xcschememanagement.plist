@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Mogenerator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Retriever.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>D644369D18D48E3F0073917A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D6D5D71918D4504D00743557</key>
 		<dict>
 			<key>primary</key>

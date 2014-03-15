@@ -11,7 +11,8 @@
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
+    @import UIKit;
+    @import CoreData;
     #import <Foundation/Foundation.h>
     #import "RTVConfiguration.h"
 #endif
