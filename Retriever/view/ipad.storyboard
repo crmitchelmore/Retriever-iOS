@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--SearchVC-->
         <scene sceneID="VhG-dz-kA0">
             <objects>
-                <viewController id="LZl-zK-t2d" sceneMemberID="viewController">
+                <viewController id="LZl-zK-t2d" customClass="RTVSearchVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hhx-ui-gfp"/>
                         <viewControllerLayoutGuide type="bottom" id="e5s-yA-f5D"/>

@@ -10,6 +10,7 @@
 		D644367218D456050073917A /* iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D644367118D456050073917A /* iphone.storyboard */; };
 		D644367418D456140073917A /* ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D644367318D456140073917A /* ipad.storyboard */; };
 		D644367A18D459AC0073917A /* retriever.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D644367818D459AC0073917A /* retriever.xcdatamodeld */; };
+		D644367F18D469000073917A /* RTVSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D644367E18D469000073917A /* RTVSearchVC.m */; };
 		D6D5D71E18D4504D00743557 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D71D18D4504D00743557 /* Foundation.framework */; };
 		D6D5D72018D4504D00743557 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D71F18D4504D00743557 /* CoreGraphics.framework */; };
 		D6D5D72218D4504D00743557 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D72118D4504D00743557 /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 		D644367318D456140073917A /* ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ipad.storyboard; sourceTree = "<group>"; };
 		D644367718D4583D0073917A /* RTVConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTVConfiguration.h; sourceTree = "<group>"; };
 		D644367918D459AC0073917A /* retriever.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = retriever.xcdatamodel; sourceTree = "<group>"; };
+		D644367D18D469000073917A /* RTVSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVSearchVC.h; sourceTree = "<group>"; };
+		D644367E18D469000073917A /* RTVSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVSearchVC.m; sourceTree = "<group>"; };
 		D6D5D71A18D4504D00743557 /* Retriever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Retriever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D5D71D18D4504D00743557 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6D5D71F18D4504D00743557 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +91,8 @@
 		D644366D18D4559D0073917A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D644367D18D469000073917A /* RTVSearchVC.h */,
+				D644367E18D469000073917A /* RTVSearchVC.m */,
 			);
 			name = Controller;
 			path = controller;
@@ -96,6 +101,7 @@
 		D644366E18D4559D0073917A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D644367C18D468350073917A /* Objects */,
 				D644367B18D459BE0073917A /* Core Data */,
 			);
 			name = Model;
@@ -143,6 +149,13 @@
 				D644367818D459AC0073917A /* retriever.xcdatamodeld */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		D644367C18D468350073917A /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 		D6D5D71118D4504D00743557 = {
@@ -357,6 +370,7 @@
 				D6D5D72A18D4504D00743557 /* main.m in Sources */,
 				D6D5D72E18D4504D00743557 /* RTVAppDelegate.m in Sources */,
 				D644367A18D459AC0073917A /* retriever.xcdatamodeld in Sources */,
+				D644367F18D469000073917A /* RTVSearchVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
