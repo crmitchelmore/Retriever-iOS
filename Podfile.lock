@@ -1,21 +1,13 @@
 PODS:
   - Mixpanel (2.3.2)
   - NewRelicAgent (3.256)
-  - ReactiveCocoa (2.2.4):
-    - ReactiveCocoa/Core
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.2.4):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.2.4)
 
 DEPENDENCIES:
   - Mixpanel
   - NewRelicAgent
-  - ReactiveCocoa
 
 SPEC CHECKSUMS:
   Mixpanel: ddd79df92245a14d2b3064544d1e9ff037d8ac3a
   NewRelicAgent: 14ab6b0fd2af34eca7668449b83bf2ae872ec533
-  ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
 
 COCOAPODS: 0.29.0
