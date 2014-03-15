@@ -38,6 +38,12 @@
 {
     [super viewDidLoad];
     self.collectionView.dataSource = self.arrayDataSource;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStylePlain target:self action:@selector(rtv_back)];
+}
+
+- (void)rtv_back
+{
+    self.backToSearchTouched();
 }
 
 

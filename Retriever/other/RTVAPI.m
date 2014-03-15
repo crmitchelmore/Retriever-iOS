@@ -22,6 +22,7 @@ static const NSString * kRTVResponseItemsKey = @"items";
 
 static const NSString * kRTVResponseItemDisplayNameKey = @"display_name";
 
+static const NSString * kRTVErrorKey = @"error";
 static const NSString * kRTVErrorMessageKey = @"message";
 static const NSString * kRTVErrorCorrectionsKey = @"corrections";
 static const NSString * kRTVErrorSuggestionsKey = @"suggestions";
@@ -34,15 +35,28 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
 	return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, (__bridge CFStringRef)kAFCharactersToLeaveUnescapedInQueryStringPairKey, (__bridge CFStringRef)kAFCharactersToBeEscapedInQueryString, CFStringConvertNSStringEncodingToEncoding(encoding));
 }
 
+
 + (void)searchForPhrase:(NSString *)phrase filter:(NSDictionary *)filter success:(RTVSearchSuccessBlock)success failure:(RTVFailureBlock)failure
 {
 
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[self configuration]];
+    static NSURLSession *session = nil;
+    if ( session ){
+        [session invalidateAndCancel];
+    }
+    session = [NSURLSession sessionWithConfiguration:[self configuration]];
     [[session dataTaskWithURL: [self urlForEndpoint:[NSString stringWithFormat:@"test?q=%@", AFPercentEscapedQueryStringKeyFromStringWithEncoding(phrase, NSUTF8StringEncoding)]]
             completionHandler:^(NSData *data,
                                 NSURLResponse *response,
                                 NSError *error) {
                 if ( error ){
+                   
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            RTVSearchError *rtvError = [[RTVSearchError alloc] initWithMessage:[NSString stringWithFormat:NSLocalizedString(@"Oops, we broke something. Try back soon. (%@)", nil), error.localizedDescription] corrections:nil suggestions:nil];
+                            failure(rtvError);
+                        });
+
+                    
+                }else{
                     NSError *jsonError;
                     
                     
@@ -56,30 +70,12 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
                             RTVSearchError *rtvError = [[RTVSearchError alloc] initWithMessage:NSLocalizedString(@"Oops, we broke something. Try back soon.", nil) corrections:nil suggestions:nil];
                             failure(rtvError);
                         });
-                    }
-                    RTVSearchError *searchError = [[RTVSearchError alloc] initWithMessage:responseJSON[kRTVErrorMessageKey] corrections:responseJSON[kRTVErrorCorrectionsKey] suggestions:responseJSON[kRTVErrorSuggestionsKey]];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        failure(searchError);
-                    });
-                    
-                }else{
-                    NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
-                    if (httpResp.statusCode == 200) {
+                    }else{
                         
-                        NSError *jsonError;
-                        
-
-                        NSDictionary *responseJSON =
-                        [NSJSONSerialization JSONObjectWithData:data
-                                                        options:NSJSONReadingAllowFragments
-                                                          error:&jsonError];
-                        
-                        if ( jsonError ) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                RTVSearchError *rtvError = [[RTVSearchError alloc] initWithMessage:NSLocalizedString(@"Oops, we broke something. Try back soon.", nil) corrections:nil suggestions:nil];
-                                failure(rtvError);
-                            });
-                        }else{
+                        NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+                        if (httpResp.statusCode == 200) {
+                            
+                            
                             
                             NSArray *jsonItems = responseJSON[kRTVResponseItemsKey];
                             NSMutableArray *items = [@[] mutableCopy];
@@ -92,10 +88,18 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
                                 success(searchResponse);
                             });
                             
+                            
+                        }else{
+                            NSDictionary *errorJSON = responseJSON[kRTVErrorKey];
+                            RTVSearchError *searchError = [[RTVSearchError alloc] initWithMessage:errorJSON[kRTVErrorMessageKey] corrections:errorJSON[kRTVErrorCorrectionsKey] suggestions:errorJSON[kRTVErrorSuggestionsKey]];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                failure(searchError);
+                            });
                         }
                     }
                 }
             }] resume];
+    
     
 }
 

@@ -23,7 +23,7 @@
 @property (nonatomic, assign) BOOL shouldReturn;
 @property (weak, nonatomic) IBOutlet UIButton *correctionButton;
 @property (weak, nonatomic) IBOutlet UIButton *suggestionButton;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong) BPArrayDataSource *arrayDataSource;
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -52,17 +52,29 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-}
+    [self.searchField becomeFirstResponder];
+    [self rtv_setupFetchedResultsController];
 
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:tap];
+}
+- (void)hideKeyboard
+{
+    [self.view endEditing:YES];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UINavigationController *dvc = segue.destinationViewController;
     RTVItemVC *itemVC = (RTVItemVC *)[dvc topViewController];
+    itemVC.backToSearchTouched = ^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
     itemVC.searchResponse = sender;
 }
 
@@ -70,34 +82,47 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if ( self.shouldReturn ){
-        [RTVAPI searchForPhrase:textField.text filter:nil success:^(RTVSearchResponse *response) {
-            [HistoryResponse historyResponseWithSearchResponse:response context:self.managedObjectContext];
-            [self performSegueWithIdentifier:@"showItem" sender:response];
-        } failure:^(RTVSearchError *error) {
-            [self rtv_showErrorControlsForError:error];
-            [[self.correctionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-                self.searchField.text = [error.corrections firstObject];
-                [self textFieldShouldReturn:textField];
-            }];
-            
-            [[self.suggestionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-                self.searchField.text = [error.suggestions firstObject];
-                [self textFieldShouldReturn:textField];
-            }];
-            self.errorLabel.text = error.message;
-            
-        }];
+        [self rtv_searchForPhrase:textField.text];
         [textField resignFirstResponder];
     }
     return self.shouldReturn;
    
 }
 
+- (void)rtv_searchForPhrase:(NSString *)phrase
+{
+    [RTVAPI searchForPhrase:phrase filter:nil success:^(RTVSearchResponse *response) {
+        [HistoryResponse historyResponseWithSearchResponse:response context:self.managedObjectContext];
+        [self performSegueWithIdentifier:@"showItem" sender:response];
+        NSError *error;
+        [self.managedObjectContext save:&error];
+        if ( error ){
+            NSLog(@"%@", error.localizedDescription);
+        }
+        
+    } failure:^(RTVSearchError *error) {
+        [self rtv_showErrorControlsForError:error];
+        
+        [[self.correctionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            self.searchField.text = [error.corrections firstObject];
+            [self textFieldShouldReturn:self.searchField];
+        }];
+        
+        [[self.suggestionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            self.searchField.text = [error.suggestions firstObject];
+            [self textFieldShouldReturn:self.searchField];
+        }];
+        self.errorLabel.text = error.message;
+        
+    }];
+
+}
+
 - (void)rtv_showErrorControlsForError:(RTVSearchError *)error
 {
-    self.errorLabel.hidden = error ? error.message.length : YES;
-    self.correctionButton.hidden = error ? error.corrections.count : YES;
-    self.suggestionButton.hidden = error ? error.suggestions.count : YES;
+    self.errorLabel.hidden = error ? !error.message.length : YES;
+    self.correctionButton.hidden = error ? !error.corrections.count : YES;
+    self.suggestionButton.hidden = error ? !error.suggestions.count : YES;
 }
 
 - (void)rtv_setupFetchedResultsController
@@ -114,22 +139,21 @@
     [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]]];
     
     [fetchRequest setEntity:entity];
+  
     
-    NSFetchedResultsController *aFetchedResultsController =
-    [[NSFetchedResultsController alloc]
-     initWithFetchRequest:fetchRequest
-     managedObjectContext:self.managedObjectContext
-     sectionNameKeyPath:nil
-     cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+     managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     
     aFetchedResultsController.delegate = self;
+
     self.fetchedResultsController = aFetchedResultsController;
+    [self.fetchedResultsController performFetch:nil];
     
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.fetchedResultsController sections] count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -144,9 +168,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:26];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
@@ -232,6 +258,13 @@
 (NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HistoryResponse *response =
+    [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self rtv_searchForPhrase:response.originalQuery];
 }
 
 @end

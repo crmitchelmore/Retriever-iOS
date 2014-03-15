@@ -19,6 +19,7 @@
 
     [self rtv_setupMixPanel];
     [self rtv_setupNewRelic];
+    [self rtv_coreDataStack];
     [self.window makeKeyAndVisible];
     
     return YES;

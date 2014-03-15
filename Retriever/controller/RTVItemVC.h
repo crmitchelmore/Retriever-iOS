@@ -12,5 +12,6 @@
 @interface RTVItemVC : UIViewController
 
 @property (nonatomic, strong) RTVSearchResponse *searchResponse;
+@property (nonatomic, copy) void(^backToSearchTouched)();
 
 @end
