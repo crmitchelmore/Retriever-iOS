@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>520EF320-805C-4F8B-86E0-D46F62B659AD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Retriever</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>296DCBF9-6DAC-4FDF-A3B3-A4629500219E</key>
+		<string>ssh://github.com/thinkplay11/Retriever-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Retriever.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>296DCBF9-6DAC-4FDF-A3B3-A4629500219E</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/thinkplay11/Retriever-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>296DCBF9-6DAC-4FDF-A3B3-A4629500219E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>296DCBF9-6DAC-4FDF-A3B3-A4629500219E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Retriever-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

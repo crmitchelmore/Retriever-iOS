@@ -8,6 +8,10 @@
 
 #import "RTVAppDelegate.h"
 
+#import <RestKit/RestKit.h>
+#import <NewRelicAgent/NewRelicAgent.h>
+#import <Mixpanel/Mixpanel.h>
+
 @implementation RTVAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -16,34 +20,53 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [self rtv_setupMixPanel];
+    [self rtv_setupNewRelic];
+    [self rtv_configureRestKitForMagicalRecord];
+    
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
+- (void)rtv_setupMixPanel
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [Mixpanel sharedInstanceWithToken:RTV_MIXPANEL_TOKEN];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+- (void)rtv_setupNewRelic
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NSString *key = RTV_NEWRELIC_TOKEN;
+    if ( key.length ){
+        [NewRelicAgent startWithApplicationToken:key];
+    }
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
+//---------------------------------------------------------------------
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
+- (void)rtv_configureRestKitForMagicalRecord
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
+    // Configure RestKit's Core Data stack
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"retriever" ofType:@"momd"]];
+    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+    
+    
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"retriever.sqlite"];
+    NSError *error = nil;
+    
+    [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    [managedObjectStore createManagedObjectContexts];
+    
+    
+    // Configure MagicalRecord to use RestKit's Core Data stack
+    [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:managedObjectStore.persistentStoreCoordinator];
+    [NSManagedObjectContext MR_setRootSavingContext:managedObjectStore.persistentStoreManagedObjectContext];
+    [NSManagedObjectContext MR_setDefaultContext:managedObjectStore.mainQueueManagedObjectContext];
+    
+    
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:RTV_API_ROOT_URL]];
+    objectManager.managedObjectStore = managedObjectStore;
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [RKObjectManager setSharedManager:objectManager];
 }
-
 @end

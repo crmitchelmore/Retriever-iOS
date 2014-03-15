@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D644367218D456050073917A /* iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D644367118D456050073917A /* iphone.storyboard */; };
+		D644367418D456140073917A /* ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D644367318D456140073917A /* ipad.storyboard */; };
+		D644367A18D459AC0073917A /* retriever.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D644367818D459AC0073917A /* retriever.xcdatamodeld */; };
 		D6D5D71E18D4504D00743557 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D71D18D4504D00743557 /* Foundation.framework */; };
 		D6D5D72018D4504D00743557 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D71F18D4504D00743557 /* CoreGraphics.framework */; };
 		D6D5D72218D4504D00743557 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D72118D4504D00743557 /* UIKit.framework */; };
@@ -19,6 +22,7 @@
 		D6D5D73918D4504D00743557 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D72118D4504D00743557 /* UIKit.framework */; };
 		D6D5D74118D4504D00743557 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6D5D73F18D4504D00743557 /* InfoPlist.strings */; };
 		D6D5D74318D4504D00743557 /* RetrieverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5D74218D4504D00743557 /* RetrieverTests.m */; };
+		FF6C7FC411474A219F7322A7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E92ADFC57F87469E97C5B8BE /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65947201ED0D48E780B4F437 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		D644367118D456050073917A /* iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iphone.storyboard; sourceTree = "<group>"; };
+		D644367318D456140073917A /* ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ipad.storyboard; sourceTree = "<group>"; };
+		D644367718D4583D0073917A /* RTVConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTVConfiguration.h; sourceTree = "<group>"; };
+		D644367918D459AC0073917A /* retriever.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = retriever.xcdatamodel; sourceTree = "<group>"; };
 		D6D5D71A18D4504D00743557 /* Retriever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Retriever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D5D71D18D4504D00743557 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6D5D71F18D4504D00743557 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +57,7 @@
 		D6D5D73E18D4504D00743557 /* RetrieverTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RetrieverTests-Info.plist"; sourceTree = "<group>"; };
 		D6D5D74018D4504D00743557 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D6D5D74218D4504D00743557 /* RetrieverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetrieverTests.m; sourceTree = "<group>"; };
+		E92ADFC57F87469E97C5B8BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,7 @@
 				D6D5D72018D4504D00743557 /* CoreGraphics.framework in Frameworks */,
 				D6D5D72218D4504D00743557 /* UIKit.framework in Frameworks */,
 				D6D5D71E18D4504D00743557 /* Foundation.framework in Frameworks */,
+				FF6C7FC411474A219F7322A7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +85,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D644366D18D4559D0073917A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			path = controller;
+			sourceTree = "<group>";
+		};
+		D644366E18D4559D0073917A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D644367B18D459BE0073917A /* Core Data */,
+			);
+			name = Model;
+			path = model;
+			sourceTree = "<group>";
+		};
+		D644366F18D4559D0073917A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D644367018D455F40073917A /* Storyboards */,
+			);
+			name = View;
+			path = view;
+			sourceTree = "<group>";
+		};
+		D644367018D455F40073917A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D644367118D456050073917A /* iphone.storyboard */,
+				D644367318D456140073917A /* ipad.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		D644367518D458070073917A /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D644367618D4581C0073917A /* Config */,
+			);
+			name = Other;
+			path = other;
+			sourceTree = "<group>";
+		};
+		D644367618D4581C0073917A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D644367718D4583D0073917A /* RTVConfiguration.h */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		D644367B18D459BE0073917A /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				D644367818D459AC0073917A /* retriever.xcdatamodeld */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		D6D5D71118D4504D00743557 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +152,7 @@
 				D6D5D73C18D4504D00743557 /* RetrieverTests */,
 				D6D5D71C18D4504D00743557 /* Frameworks */,
 				D6D5D71B18D4504D00743557 /* Products */,
+				65947201ED0D48E780B4F437 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +172,7 @@
 				D6D5D71F18D4504D00743557 /* CoreGraphics.framework */,
 				D6D5D72118D4504D00743557 /* UIKit.framework */,
 				D6D5D73618D4504D00743557 /* XCTest.framework */,
+				E92ADFC57F87469E97C5B8BE /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -107,6 +180,10 @@
 		D6D5D72318D4504D00743557 /* Retriever */ = {
 			isa = PBXGroup;
 			children = (
+				D644367518D458070073917A /* Other */,
+				D644366E18D4559D0073917A /* Model */,
+				D644366F18D4559D0073917A /* View */,
+				D644366D18D4559D0073917A /* Controller */,
 				D6D5D72C18D4504D00743557 /* RTVAppDelegate.h */,
 				D6D5D72D18D4504D00743557 /* RTVAppDelegate.m */,
 				D6D5D72F18D4504D00743557 /* Images.xcassets */,
@@ -151,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6D5D74618D4504D00743557 /* Build configuration list for PBXNativeTarget "Retriever" */;
 			buildPhases = (
+				05069F51BF584B6AB9C2DA10 /* Check Pods Manifest.lock */,
 				D6D5D71618D4504D00743557 /* Sources */,
 				D6D5D71718D4504D00743557 /* Frameworks */,
 				D6D5D71818D4504D00743557 /* Resources */,
+				4CD92F9359A44A5093B2FC94 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,6 +299,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D644367418D456140073917A /* ipad.storyboard in Resources */,
+				D644367218D456050073917A /* iphone.storyboard in Resources */,
 				D6D5D72818D4504D00743557 /* InfoPlist.strings in Resources */,
 				D6D5D73018D4504D00743557 /* Images.xcassets in Resources */,
 			);
@@ -235,6 +316,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		05069F51BF584B6AB9C2DA10 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD92F9359A44A5093B2FC94 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D6D5D71618D4504D00743557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -242,6 +356,7 @@
 			files = (
 				D6D5D72A18D4504D00743557 /* main.m in Sources */,
 				D6D5D72E18D4504D00743557 /* RTVAppDelegate.m in Sources */,
+				D644367A18D459AC0073917A /* retriever.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +472,7 @@
 		};
 		D6D5D74718D4504D00743557 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65947201ED0D48E780B4F437 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -370,6 +486,7 @@
 		};
 		D6D5D74818D4504D00743557 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65947201ED0D48E780B4F437 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -440,6 +557,7 @@
 				D6D5D74818D4504D00743557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6D5D74918D4504D00743557 /* Build configuration list for PBXNativeTarget "RetrieverTests" */ = {
 			isa = XCConfigurationList;
@@ -448,8 +566,22 @@
 				D6D5D74B18D4504D00743557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D644367818D459AC0073917A /* retriever.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D644367918D459AC0073917A /* retriever.xcdatamodel */,
+			);
+			currentVersion = D644367918D459AC0073917A /* retriever.xcdatamodel */;
+			path = retriever.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D6D5D71218D4504D00743557 /* Project object */;
 }
