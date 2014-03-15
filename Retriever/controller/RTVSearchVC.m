@@ -11,7 +11,6 @@
 #import "RTVSearchError.h"
 #import "RTVSearchResponse.h"
 #import "RTVItemVC.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "HistoryResponse.h"
 #import "HistoryItem.h"
 #import "RTVAppDelegate.h"
@@ -19,10 +18,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
-@property (nonatomic, assign) BOOL shouldReturn;
+
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardHeightConstraint;
-
 
 
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
@@ -38,27 +37,25 @@
     return d.managedObjectContext;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 
-    [[self.searchField.rac_textSignal doNext:^(id x) {
-        [self rtv_showErrorControlsForError:nil];
-    }] subscribeNext:^(NSString *x) {
-        self.shouldReturn = x.length > 2;
-    }];
     self.searchField.delegate = self;
  
     [self registerForKeyboardNotifications];
 
+    [self.searchField becomeFirstResponder];
 }
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardDidShowNotification object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
@@ -71,9 +68,12 @@
     NSDictionary* info = [aNotification userInfo];
     CGRect kbRect = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     kbRect = [self.view convertRect:kbRect toView:nil];
-    NSLog(@"%f",kbRect.size.height);
-    self.keyboardHeightConstraint.constant = kbRect.size.height;
-    [self.view layoutIfNeeded];
+    
+    CGFloat height = kbRect.size.height;
+    if ( height < 400){
+        self.keyboardHeightConstraint.constant = height;
+        [self.view layoutIfNeeded];
+    }
 }
 
 
@@ -85,6 +85,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    static BOOL loaded = NO;
+    if ( loaded ){
+        [self.searchField becomeFirstResponder];
+    }
+    loaded = YES;
+
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     [self.searchField becomeFirstResponder];
 
 }
@@ -92,8 +102,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UINavigationController *dvc = segue.destinationViewController;
-    RTVItemVC *itemVC = (RTVItemVC *)[dvc topViewController];
+
+    RTVItemVC *itemVC = (RTVItemVC *)segue.destinationViewController;
     itemVC.backToSearchTouched = ^{
         [self dismissViewControllerAnimated:YES completion:nil];
     };
@@ -103,12 +113,18 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if ( self.shouldReturn ){
-        [self rtv_searchForPhrase:textField.text];
-        [textField resignFirstResponder];
+
+    [self rtv_searchForPhrase:textField.text];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ( [string rangeOfString:@" "].length != 0 ){
+        return NO;
     }
-    return self.shouldReturn;
-   
+    [self rtv_showErrorControlsForError:nil];
+    return YES;
 }
 
 - (void)rtv_searchForPhrase:(NSString *)phrase

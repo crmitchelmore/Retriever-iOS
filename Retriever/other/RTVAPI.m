@@ -44,7 +44,7 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
         [session invalidateAndCancel];
     }
     session = [NSURLSession sessionWithConfiguration:[self configuration]];
-    [[session dataTaskWithURL: [self urlForEndpoint:[NSString stringWithFormat:@"test?q=%@", AFPercentEscapedQueryStringKeyFromStringWithEncoding(phrase, NSUTF8StringEncoding)]]
+    [[session dataTaskWithURL: [self urlForEndpoint:[NSString stringWithFormat:@"retrieve?q=%@", AFPercentEscapedQueryStringKeyFromStringWithEncoding(phrase, NSUTF8StringEncoding)]]
             completionHandler:^(NSData *data,
                                 NSURLResponse *response,
                                 NSError *error) {
