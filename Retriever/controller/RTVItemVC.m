@@ -29,7 +29,10 @@
 {
     if ( !_arrayDataSource ){
 
-        _arrayDataSource = [[BPArrayDataSource alloc] initWithItemView:self.collectionView items:self.searchResponse.items cellClass:[RTVItemCell class] registerType:BPCellRegistrationTypeNone configureCellBlock:^(RTVItemCell *cell, RTVItem *item, NSIndexPath *indexPath) {
+        NSMutableArray *extendedItems = [self.searchResponse.items mutableCopy];
+        [extendedItems insertObject:[self.searchResponse.items lastObject] atIndex:0];
+        [extendedItems addObject:[self.searchResponse.items firstObject]];
+        _arrayDataSource = [[BPArrayDataSource alloc] initWithItemView:self.collectionView items:extendedItems cellClass:[RTVItemCell class] registerType:BPCellRegistrationTypeNone configureCellBlock:^(RTVItemCell *cell, RTVItem *item, NSIndexPath *indexPath) {
             cell.item = item;
             
         }];
@@ -76,16 +79,35 @@
 }
 - (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated
 {
-    if ( index+1 == [self.arrayDataSource.items count] ){
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
-        
-    }else if ( index >= 0 && index < [self.arrayDataSource.items count] ){
+   if ( index >= 0 && index < [self.arrayDataSource.items count] ){
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
 
         self.lastButton.hidden = YES;//index == 0;
         
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
+       if ( !animated ){
+           [self scrollViewDidEndScrollingAnimation:self.collectionView];
+       }
+   }else {
+       [self scrollViewDidEndScrollingAnimation:self.collectionView];
+   }
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self scrollViewDidEndScrollingAnimation:scrollView];
+}
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+
+    NSInteger index = (self.collectionView.contentOffset.x /self.collectionView.frame.size.width);
+    if ( index+1 == [self.arrayDataSource.items count] ){
+        
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+        
+    }else if ( index == 0 ){
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:[self.arrayDataSource.items count]-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     }
+
 }
 - (void)snap
 {
