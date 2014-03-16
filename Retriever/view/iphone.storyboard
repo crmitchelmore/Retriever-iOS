@@ -212,6 +212,7 @@
                         <outlet property="activityIndicator" destination="42E-kk-AY5" id="Px3-El-UPI"/>
                         <outlet property="connectingView" destination="Fyk-D0-cZE" id="JgL-W8-bW8"/>
                         <outlet property="errorMessage" destination="6T5-0j-fzt" id="lJ8-fk-j7x"/>
+                        <outlet property="imageView" destination="F4Y-He-6f4" id="3Db-O2-5bt"/>
                         <outlet property="keyboardHeightConstraint" destination="iVN-u9-a09" id="GHf-M3-mQu"/>
                         <outlet property="searchField" destination="zr4-3w-Bjc" id="1A6-Or-UQX"/>
                         <segue destination="c89-z5-sge" kind="modal" identifier="showItem" id="PT8-jX-PYj"/>

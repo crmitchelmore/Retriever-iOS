@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *errorMessage;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardHeightConstraint;
 
@@ -159,13 +160,13 @@
     [self showConnecting];
     self.loading = YES;
     [RTVAPI searchForPhrase:phrase filter:nil success:^(RTVSearchResponse *response) {
-        [HistoryResponse historyResponseWithSearchResponse:response context:self.managedObjectContext];
+//        [HistoryResponse historyResponseWithSearchResponse:response context:self.managedObjectContext];
         [self performSegueWithIdentifier:@"showItem" sender:response];
-        NSError *error;
-        [self.managedObjectContext save:&error];
-        if ( error ){
-            NSLog(@"%@", error.localizedDescription);
-        }
+//        NSError *error;
+//        [self.managedObjectContext save:&error];
+//        if ( error ){
+//            NSLog(@"%@", error.localizedDescription);
+//        }
         
     } failure:^(RTVSearchError *error) {
         self.loading = NO;
@@ -194,7 +195,6 @@
     self.errorMessage.hidden = error ? !error.message.length : YES;
     self.activityIndicator.hidden = !self.errorMessage.hidden;
 }
-
 
 
 
