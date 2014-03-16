@@ -52,7 +52,7 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
                 if ( error ){
                    
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            RTVSearchError *rtvError = [[RTVSearchError alloc] initWithMessage:[NSString stringWithFormat:NSLocalizedString(@"Oops, we broke something. Try back soon. (%@)", nil), error.localizedDescription] corrections:nil suggestions:nil];
+                            RTVSearchError *rtvError = [[RTVSearchError alloc] initWithMessage:[NSString stringWithFormat:NSLocalizedString(@"Sorry, we couldn't connect this time.", nil), error.localizedDescription] corrections:nil suggestions:nil];
                             failure(rtvError);
                         });
 
@@ -68,7 +68,7 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
                     
                     if ( jsonError ) {
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            RTVSearchError *rtvError = [[RTVSearchError alloc] initWithMessage:NSLocalizedString(@"Oops, we broke something. Try back soon.", nil) corrections:nil suggestions:nil];
+                            RTVSearchError *rtvError = [[RTVSearchError alloc] initWithMessage:NSLocalizedString(@"Sorry, we couldn't connect this time.", nil) corrections:nil suggestions:nil];
                             failure(rtvError);
                         });
                     }else{
