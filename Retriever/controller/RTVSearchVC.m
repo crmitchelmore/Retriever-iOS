@@ -11,8 +11,6 @@
 #import "RTVSearchError.h"
 #import "RTVSearchResponse.h"
 #import "RTVItemVC.h"
-#import "HistoryResponse.h"
-#import "HistoryItem.h"
 #import "RTVAppDelegate.h"
 @interface RTVSearchVC ()<UITextFieldDelegate>
 

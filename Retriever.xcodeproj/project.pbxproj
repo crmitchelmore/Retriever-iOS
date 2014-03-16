@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		D644367218D456050073917A /* iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D644367118D456050073917A /* iphone.storyboard */; };
 		D644367418D456140073917A /* ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D644367318D456140073917A /* ipad.storyboard */; };
-		D644367A18D459AC0073917A /* retriever.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D644367818D459AC0073917A /* retriever.xcdatamodeld */; };
 		D644367F18D469000073917A /* RTVSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D644367E18D469000073917A /* RTVSearchVC.m */; };
 		D644368218D46BAC0073917A /* RTVAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D644368118D46BAC0073917A /* RTVAPI.m */; };
 		D644368618D46CAE0073917A /* RTVSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D644368518D46CAE0073917A /* RTVSearchResponse.m */; };
@@ -32,10 +31,6 @@
 		D644368F18D482840073917A /* RTVItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D644368E18D482840073917A /* RTVItemVC.m */; };
 		D644369318D483920073917A /* RTVItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D644369218D483920073917A /* RTVItemCell.m */; };
 		D644369618D484CC0073917A /* BPArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D644369518D484CC0073917A /* BPArrayDataSource.m */; };
-		D644369918D48DE60073917A /* HistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D644369818D48DE60073917A /* HistoryItem.m */; };
-		D644369C18D48DE60073917A /* HistoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D644369B18D48DE60073917A /* HistoryResponse.m */; };
-		D64436A618D48EEB0073917A /* _HistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D64436A318D48EEB0073917A /* _HistoryItem.m */; };
-		D64436A718D48EEB0073917A /* _HistoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D64436A518D48EEB0073917A /* _HistoryResponse.m */; };
 		D6D5D71E18D4504D00743557 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D71D18D4504D00743557 /* Foundation.framework */; };
 		D6D5D72018D4504D00743557 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D71F18D4504D00743557 /* CoreGraphics.framework */; };
 		D6D5D72218D4504D00743557 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D72118D4504D00743557 /* UIKit.framework */; };
@@ -48,7 +43,6 @@
 		D6D5D73918D4504D00743557 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D72118D4504D00743557 /* UIKit.framework */; };
 		D6D5D74118D4504D00743557 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6D5D73F18D4504D00743557 /* InfoPlist.strings */; };
 		D6D5D74318D4504D00743557 /* RetrieverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D5D74218D4504D00743557 /* RetrieverTests.m */; };
-		D6FC77D618D4B7A100DE7455 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FC77D518D4B7A100DE7455 /* Reveal.framework */; };
 		FF6C7FC411474A219F7322A7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E92ADFC57F87469E97C5B8BE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +61,6 @@
 		D644367118D456050073917A /* iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iphone.storyboard; sourceTree = "<group>"; };
 		D644367318D456140073917A /* ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ipad.storyboard; sourceTree = "<group>"; };
 		D644367718D4583D0073917A /* RTVConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTVConfiguration.h; sourceTree = "<group>"; };
-		D644367918D459AC0073917A /* retriever.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = retriever.xcdatamodel; sourceTree = "<group>"; };
 		D644367D18D469000073917A /* RTVSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVSearchVC.h; sourceTree = "<group>"; };
 		D644367E18D469000073917A /* RTVSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVSearchVC.m; sourceTree = "<group>"; };
 		D644368018D46BAC0073917A /* RTVAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTVAPI.h; sourceTree = "<group>"; };
@@ -84,14 +77,6 @@
 		D644369218D483920073917A /* RTVItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTVItemCell.m; sourceTree = "<group>"; };
 		D644369418D484CC0073917A /* BPArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPArrayDataSource.h; sourceTree = "<group>"; };
 		D644369518D484CC0073917A /* BPArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPArrayDataSource.m; sourceTree = "<group>"; };
-		D644369718D48DE60073917A /* HistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItem.h; sourceTree = "<group>"; };
-		D644369818D48DE60073917A /* HistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItem.m; sourceTree = "<group>"; };
-		D644369A18D48DE60073917A /* HistoryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryResponse.h; sourceTree = "<group>"; };
-		D644369B18D48DE60073917A /* HistoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryResponse.m; sourceTree = "<group>"; };
-		D64436A218D48EEB0073917A /* _HistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HistoryItem.h; sourceTree = "<group>"; };
-		D64436A318D48EEB0073917A /* _HistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HistoryItem.m; sourceTree = "<group>"; };
-		D64436A418D48EEB0073917A /* _HistoryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HistoryResponse.h; sourceTree = "<group>"; };
-		D64436A518D48EEB0073917A /* _HistoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HistoryResponse.m; sourceTree = "<group>"; };
 		D6D5D71A18D4504D00743557 /* Retriever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Retriever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D5D71D18D4504D00743557 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6D5D71F18D4504D00743557 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,7 +93,6 @@
 		D6D5D73E18D4504D00743557 /* RetrieverTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RetrieverTests-Info.plist"; sourceTree = "<group>"; };
 		D6D5D74018D4504D00743557 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D6D5D74218D4504D00743557 /* RetrieverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetrieverTests.m; sourceTree = "<group>"; };
-		D6FC77D518D4B7A100DE7455 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		E92ADFC57F87469E97C5B8BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,7 +103,6 @@
 			files = (
 				D6D5D72018D4504D00743557 /* CoreGraphics.framework in Frameworks */,
 				D6D5D72218D4504D00743557 /* UIKit.framework in Frameworks */,
-				D6FC77D618D4B7A100DE7455 /* Reveal.framework in Frameworks */,
 				D6D5D71E18D4504D00743557 /* Foundation.framework in Frameworks */,
 				FF6C7FC411474A219F7322A7 /* libPods.a in Frameworks */,
 			);
@@ -154,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				D644367C18D468350073917A /* Objects */,
-				D644367B18D459BE0073917A /* Core Data */,
 			);
 			name = Model;
 			path = model;
@@ -200,19 +182,6 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
-		D644367B18D459BE0073917A /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				D644367818D459AC0073917A /* retriever.xcdatamodeld */,
-				D64436A818D48EF20073917A /* Generated */,
-				D644369A18D48DE60073917A /* HistoryResponse.h */,
-				D644369B18D48DE60073917A /* HistoryResponse.m */,
-				D644369718D48DE60073917A /* HistoryItem.h */,
-				D644369818D48DE60073917A /* HistoryItem.m */,
-			);
-			name = "Core Data";
-			sourceTree = "<group>";
-		};
 		D644367C18D468350073917A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,17 +202,6 @@
 				D644369218D483920073917A /* RTVItemCell.m */,
 			);
 			name = Cells;
-			sourceTree = "<group>";
-		};
-		D64436A818D48EF20073917A /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				D64436A218D48EEB0073917A /* _HistoryItem.h */,
-				D64436A318D48EEB0073917A /* _HistoryItem.m */,
-				D64436A418D48EEB0073917A /* _HistoryResponse.h */,
-				D64436A518D48EEB0073917A /* _HistoryResponse.m */,
-			);
-			name = Generated;
 			sourceTree = "<group>";
 		};
 		D6D5D71118D4504D00743557 = {
@@ -269,7 +227,6 @@
 		D6D5D71C18D4504D00743557 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6FC77D518D4B7A100DE7455 /* Reveal.framework */,
 				D6D5D71D18D4504D00743557 /* Foundation.framework */,
 				D6D5D71F18D4504D00743557 /* CoreGraphics.framework */,
 				D6D5D72118D4504D00743557 /* UIKit.framework */,
@@ -473,20 +430,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D644369C18D48DE60073917A /* HistoryResponse.m in Sources */,
 				D644368218D46BAC0073917A /* RTVAPI.m in Sources */,
 				D644369318D483920073917A /* RTVItemCell.m in Sources */,
 				D6D5D72A18D4504D00743557 /* main.m in Sources */,
 				D6D5D72E18D4504D00743557 /* RTVAppDelegate.m in Sources */,
-				D644367A18D459AC0073917A /* retriever.xcdatamodeld in Sources */,
 				D644368918D474580073917A /* RTVSearchError.m in Sources */,
-				D64436A618D48EEB0073917A /* _HistoryItem.m in Sources */,
 				D644368F18D482840073917A /* RTVItemVC.m in Sources */,
 				D644369618D484CC0073917A /* BPArrayDataSource.m in Sources */,
 				D644367F18D469000073917A /* RTVSearchVC.m in Sources */,
-				D644369918D48DE60073917A /* HistoryItem.m in Sources */,
 				D644368618D46CAE0073917A /* RTVSearchResponse.m in Sources */,
-				D64436A718D48EEB0073917A /* _HistoryResponse.m in Sources */,
 				D644368C18D474F90073917A /* RTVItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,19 +685,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D644367818D459AC0073917A /* retriever.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D644367918D459AC0073917A /* retriever.xcdatamodel */,
-			);
-			currentVersion = D644367918D459AC0073917A /* retriever.xcdatamodel */;
-			path = retriever.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D6D5D71218D4504D00743557 /* Project object */;
 }

@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Mixpanel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-NewRelicAgent.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>9D76370B8EA049E6B0F920A8</key>
+		<key>02DC6209A86F4A20ABFCFEB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6F71236A00A4D8B8AB3FEED</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E4AA6E935E804333936C92B5</key>
+		<key>98FDFBC466F4480A8DCB5DDA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

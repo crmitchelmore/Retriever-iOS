@@ -1,13 +1,10 @@
 PODS:
-  - Mixpanel (2.3.2)
   - NewRelicAgent (3.256)
 
 DEPENDENCIES:
-  - Mixpanel
   - NewRelicAgent
 
 SPEC CHECKSUMS:
-  Mixpanel: ddd79df92245a14d2b3064544d1e9ff037d8ac3a
   NewRelicAgent: 14ab6b0fd2af34eca7668449b83bf2ae872ec533
 
 COCOAPODS: 0.29.0

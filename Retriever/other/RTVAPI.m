@@ -134,6 +134,15 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
 
 + (NSURLSessionConfiguration *)configuration
 {
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    NSString *uuid = [d stringForKey:@"rtvUUID"];
+    if ( !uuid.length ){
+        NSUUID *aUUID = [NSUUID new];
+        uuid = aUUID.UUIDString;
+        [d setObject:uuid forKey:@"rtvUUID"];
+        [d synchronize];
+    }
+    
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     sessionConfig.allowsCellularAccess = YES;
     NSString *time = [NSString stringWithFormat:@"%f",[NSDate timeIntervalSinceReferenceDate]];
@@ -142,7 +151,8 @@ static NSString * AFPercentEscapedQueryStringKeyFromStringWithEncoding(NSString 
     [sessionConfig setHTTPAdditionalHeaders: @{@"Accept": @"application/json",
                                                @"X-Reference": time,
                                                @"X-API-Version" : RTV_API_VERSION,
-                                               @"X-Authentication" : token}];
+                                               @"X-Authentication" : token,
+                                               @"X-User" : uuid}];
 
     sessionConfig.timeoutIntervalForRequest = 30.0;
     sessionConfig.timeoutIntervalForResource = 60.0;

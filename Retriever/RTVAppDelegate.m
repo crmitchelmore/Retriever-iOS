@@ -9,7 +9,6 @@
 #import "RTVAppDelegate.h"
 
 #import <NewRelicAgent/NewRelic.h>
-#import <Mixpanel/Mixpanel.h>
 
 @implementation RTVAppDelegate
 
@@ -17,7 +16,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    [self rtv_setupMixPanel];
     [self rtv_setupNewRelic];
     [self rtv_coreDataStack];
     [self.window makeKeyAndVisible];
@@ -30,13 +28,6 @@
 #pragma mark - Private API
 /////////////////////////////////////////////////////////////////////////
 
-
-- (void)rtv_setupMixPanel
-{
-    [Mixpanel sharedInstanceWithToken:RTV_MIXPANEL_TOKEN];
-}
-
-//---------------------------------------------------------------------
 
 - (void)rtv_setupNewRelic
 {

@@ -6,12 +6,6 @@
 // project.
 
 
-// Mixpanel
-#define COCOAPODS_POD_AVAILABLE_Mixpanel
-#define COCOAPODS_VERSION_MAJOR_Mixpanel 2
-#define COCOAPODS_VERSION_MINOR_Mixpanel 3
-#define COCOAPODS_VERSION_PATCH_Mixpanel 2
-
 // NewRelicAgent
 #define COCOAPODS_POD_AVAILABLE_NewRelicAgent
 #define COCOAPODS_VERSION_MAJOR_NewRelicAgent 3

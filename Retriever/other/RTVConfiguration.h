@@ -19,4 +19,9 @@
 #define RTV_INTERMIDIARY_PATH @"api/v1/"
 
 #define RTV_API_VERSION @"1.0"
+#define RTV_YELLOW_COLOR [UIColor whiteColor]
+#define RTV_BLACK_COLOR [UIColor colorWithRed: 1 green: 0.804 blue: 0.349 alpha: 1]
+#define RTV_WHITE_COLOR [UIColor colorWithRed: 0.937 green: 0.937 blue: 0.937 alpha: 1]
+
+
 #endif
