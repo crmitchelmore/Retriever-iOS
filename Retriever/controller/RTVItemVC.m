@@ -13,13 +13,17 @@
 #import "RTVItemCell.h"
 //Other
 #import "BPArrayDataSource.h"
-
+#import <NewRelic.h>
 @interface RTVItemVC ()<UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backToSearch;
 @property (weak, nonatomic) IBOutlet UIButton *lastButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) BPArrayDataSource *arrayDataSource;
+
+@property (nonatomic, assign) NSInteger numberOfSwipeBack;
+@property (nonatomic, assign) NSInteger numberOfSwipeForwards;
+@property (nonatomic, assign) NSInteger numberOfTap;
 @end
 
 @implementation RTVItemVC
@@ -42,7 +46,22 @@
 - (IBAction)backButtonTouched:(UIButton *)sender
 {
     self.backToSearchTouched();
+    [NewRelic recordMetricWithName:@"Back_to_search" category:@"Navigation"];
 
+}
+- (void)resetValues
+{
+    self.numberOfSwipeForwards = 0;
+    self.numberOfSwipeBack = 0;
+    self.numberOfTap = 0;
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [NewRelic recordMetricWithName:@"Swipe_back" category:self.searchResponse.matchedQuery value:@(self.numberOfSwipeBack)];
+    [NewRelic recordMetricWithName:@"Swipe_forwards" category:self.searchResponse.matchedQuery value:@(self.numberOfSwipeForwards)];
+    [NewRelic recordMetricWithName:@"Tap" category:self.searchResponse.matchedQuery value:@(self.numberOfTap)];
+    [self resetValues];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -52,6 +71,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self resetValues];
     self.collectionView.dataSource = self.arrayDataSource;
     self.collectionView.delegate = self;
     self.titleLabel.text = self.searchResponse.matchedQuery;
@@ -111,16 +131,19 @@
 }
 - (void)snap
 {
+    self.numberOfTap++;
     NSInteger index = (self.collectionView.contentOffset.x /self.collectionView.frame.size.width)+1;
     [self scrollToIndex:index animated:NO];
 }
 - (void)next
 {
+    self.numberOfSwipeForwards++;
     NSInteger index = (self.collectionView.contentOffset.x /self.collectionView.frame.size.width)+1;
     [self scrollToIndex:index animated:YES];
 }
 - (void)last
 {
+    self.numberOfSwipeBack++;
     NSInteger index = (self.collectionView.contentOffset.x /self.collectionView.frame.size.width)-1;
     [self scrollToIndex:index animated:YES];
 }

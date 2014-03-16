@@ -57,13 +57,13 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHW-Wn-kuf">
-                                <rect key="frame" x="0.0" y="-8" width="50" height="50"/>
+                                <rect key="frame" x="-100" y="-33" width="300" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="1D3-zz-8L1"/>
-                                    <constraint firstAttribute="height" constant="50" id="fgJ-fA-qVM"/>
+                                    <constraint firstAttribute="width" constant="300" id="1D3-zz-8L1"/>
+                                    <constraint firstAttribute="height" constant="100" id="fgJ-fA-qVM"/>
                                 </constraints>
-                                <state key="normal" image="inapp">
+                                <state key="normal" image="button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -98,8 +98,8 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cXc-PN-a7i" secondAttribute="trailing" constant="70" id="6Fi-9e-JRw"/>
                             <constraint firstItem="vm3-yk-nTp" firstAttribute="leading" secondItem="lSW-MB-8Dc" secondAttribute="leading" id="LjD-yY-uLY"/>
                             <constraint firstItem="cXc-PN-a7i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KHW-Wn-kuf" secondAttribute="trailing" constant="20" id="Pec-SV-u7i"/>
-                            <constraint firstItem="KHW-Wn-kuf" firstAttribute="leading" secondItem="lSW-MB-8Dc" secondAttribute="leading" id="UK3-kZ-fkG"/>
-                            <constraint firstItem="KHW-Wn-kuf" firstAttribute="top" secondItem="PuY-Gt-hQx" secondAttribute="bottom" constant="-8" id="a5G-5z-DMB"/>
+                            <constraint firstItem="KHW-Wn-kuf" firstAttribute="leading" secondItem="lSW-MB-8Dc" secondAttribute="leading" constant="-100" id="UK3-kZ-fkG"/>
+                            <constraint firstItem="KHW-Wn-kuf" firstAttribute="top" secondItem="PuY-Gt-hQx" secondAttribute="bottom" constant="-33" id="a5G-5z-DMB"/>
                             <constraint firstItem="cXc-PN-a7i" firstAttribute="top" secondItem="PuY-Gt-hQx" secondAttribute="bottom" constant="11" id="hQe-d1-bkU"/>
                             <constraint firstAttribute="centerX" secondItem="cXc-PN-a7i" secondAttribute="centerX" id="jVD-im-GQa"/>
                             <constraint firstItem="vm3-yk-nTp" firstAttribute="top" secondItem="PuY-Gt-hQx" secondAttribute="bottom" constant="50" id="pyz-Mg-ujq"/>
@@ -223,6 +223,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button" width="50" height="50"/>
         <image name="inapp" width="1024" height="1024"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
