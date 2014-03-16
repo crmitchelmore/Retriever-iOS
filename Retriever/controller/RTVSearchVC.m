@@ -115,6 +115,19 @@
     self.loading = NO;
 
 }
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+
+    static BOOL first = YES;
+    if ( first && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ){
+        if ( UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ){
+            self.keyboardHeightConstraint.constant = 352;
+        }
+    }
+    first = NO;
+}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
