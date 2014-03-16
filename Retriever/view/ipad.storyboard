@@ -158,10 +158,10 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inapp" translatesAutoresizingMaskIntoConstraints="NO" id="ZFb-dm-euQ" userLabel="ImageView">
-                                <rect key="frame" x="276" y="540" width="216" height="216"/>
+                                <rect key="frame" x="159" y="306" width="450" height="450"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="216" id="EeR-vL-oPd"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="450" id="EeR-vL-oPd"/>
                                     <constraint firstAttribute="width" secondItem="ZFb-dm-euQ" secondAttribute="height" multiplier="1:1" id="jJ3-F1-M4J"/>
                                 </constraints>
                             </imageView>

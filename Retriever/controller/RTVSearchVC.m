@@ -59,7 +59,7 @@
 {
 
     self.activityIndicator.hidden = YES;
-    [UIView animateWithDuration:0.6 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.connectingView.alpha = 0;
     } completion:^(BOOL finished) {
         self.connectingView.hidden = YES;
@@ -139,7 +139,7 @@
     if ( !self.errorMessage.hidden ){
         self.errorMessage.hidden = YES;
         [self closeError];
-    }else if ( !self.loading ){
+    }else if ( !self.loading && textField.text.length > 0 ){
         [self rtv_searchForPhrase:textField.text];
     }
     return YES;
@@ -148,6 +148,12 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if ( [string rangeOfString:@" "].length != 0 ){
+        return NO;
+    }
+    if ( !self.connectingView.hidden ){
+        textField.text = string;
+        [self closeError];
+        [self rtv_showErrorControlsForError:nil];
         return NO;
     }
     return YES;
@@ -191,6 +197,7 @@
 - (void)rtv_showErrorControlsForError:(RTVSearchError *)error
 {
     self.errorMessage.hidden = error ? !error.message.length : YES;
+    
     self.activityIndicator.hidden = !self.errorMessage.hidden;
 }
 
